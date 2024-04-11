@@ -1,6 +1,7 @@
 # GROUP-CA 2-
 #Mohammed Sazzadul Islam
 #Sami Ahmed
+#Ranjithkumar Mathiazhagan
 
 #TOPIC COVID EVENT LINKED CONTACT TRACING
 
