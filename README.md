@@ -1,4 +1,7 @@
 # GROUP-CA 2-
+#Mohammed Sazzadul Islam
+#Sami Ahmed
+
 #TOPIC COVID EVENT LINKED CONTACT TRACING
 
 - Make sure you have python and pip installed
