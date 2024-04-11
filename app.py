@@ -31,3 +31,10 @@ def register():
         flash('You are now registered and can log in', 'success')
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
+
+@app.route('/logout')
+@is_logged_in
+def logout():
+    session.clear()
+    flash('You are now logged out', 'success')
+    return redirect(url_for('login'))
