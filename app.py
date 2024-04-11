@@ -32,6 +32,12 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
 
+@app.route('/take_survey', methods=['GET', 'POST'])
+@is_logged_in
+def add_question():
+    form = ArticleForm(request.form)
+    if request.method == 'POST' and form.validate():
+
 @app.route('/logout')
 @is_logged_in
 def logout():
