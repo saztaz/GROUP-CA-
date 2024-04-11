@@ -25,10 +25,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `questionaires`
+-- Table structure for table `survey`
 --
 
-CREATE TABLE `questionaires` (
+CREATE TABLE `survey` (
   `id` int(20) NOT NULL,
   `name` varchar(200) NOT NULL,
   `age` varchar(200) NOT NULL,
@@ -44,69 +44,15 @@ CREATE TABLE `questionaires` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `questionaires`
+-- Dumping data for table `survey`
 --
 
-INSERT INTO `questionaires` (`id`, `name`, `age`, `phone`, `symptoms`, `symptops_started`, `closeness`, `other_medical_issues`, `family_members`, `any_recent_travel`, `same_symptoms`, `create_date`) VALUES
-(1, 'JohnDoe', '20', '+254 743 733706', 'Symptoms are chills, fever and sweating, usually occurring a few weeks after being bitten.\r\n', 'Three weeks ago that is 30th July 2020', 'No ', 'Yes, Symptoms are chills, fever and sweating, usually occurring a few weeks after being bitten.\r\n', '4', 'Yes, I travelled Home from town', 'No', '2020-08-05 11:04:00.008994'),
-(2, 'JaneDoe', '56', '+254723473411', 'Symptoms are chills, fever and sweating, usually occurring a few weeks after being bitten.\r\n', 'Three weeks ago that is 30th July 2020', 'Yes, On 1st August 2020', 'No', '4', 'Yes , From Nairobi to Machakos', 'Yes, My brother has fever and sweating,', '2020-08-05 11:12:06.411307');
+INSERT INTO `survey` (`id`, `name`, `age`, `phone`, `symptoms`, `symptops_started`, `closeness`, `other_medical_issues`, `family_members`, `any_recent_travel`, `same_symptoms`, `create_date`) VALUES
+(1, 'JohnDoe', '41', '+353439890123', 'Symptoms are chills, fever and sweating, usually occurring a few weeks after being bitten.\r\n', 'Three weeks ago that is 21st March 2024', 'No ', 'Yes, Symptoms are chills, fever and sweating, usually occurring a few weeks after being bitten.\r\n', '4', 'Yes, I travelled Lucan from Citywest', 'No', '2024-04-11 11:04:00.008994'),
+(2, 'JaneDoe', '37', '+35312349280', 'Symptoms are chills, fever and sweating, usually occurring a few weeks after being bitten.\r\n', 'Three weeks ago that is 21st March 2024', 'Yes, On 23rd March 2024', 'No', '4', 'Yes , From Blackrock to City Center', 'Yes, My brother has fever and sweating,', '2024-04-11 11:12:06.411307');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `users`
 --
-
-CREATE TABLE `users` (
-  `id` int(20) NOT NULL,
-  `name` varchar(200) NOT NULL,
-  `email` varchar(200) NOT NULL,
-  `username` varchar(200) NOT NULL,
-  `password` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `name`, `email`, `username`, `password`) VALUES
-(1, 'JohnDoe', 'johnDoe@gmail.com', 'John', '$5$rounds=535000$0XqrU7X1Uim2Vd89$QhWdhd2iMrsAC2KcAG1sFTnGfvKBg4EEmmVFBzexOQ0');
-
-
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `questionaires`
---
-ALTER TABLE `questionaires`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `questionaires`
---
-ALTER TABLE `questionaires`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
