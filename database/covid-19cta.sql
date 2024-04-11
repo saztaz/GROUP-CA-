@@ -56,6 +56,7 @@ INSERT INTO `survey` (`id`, `name`, `age`, `phone`, `symptoms`, `symptops_starte
 --
 -- Table structure for table `users`
 --
+
 CREATE TABLE `users` (
   `id` int(20) NOT NULL,
   `name` varchar(200) NOT NULL,
@@ -67,6 +68,9 @@ CREATE TABLE `users` (
 --
 -- Dumping data for table `users`
 --
+
+INSERT INTO `users` (`id`, `name`, `email`, `username`, `password`) VALUES
+(1, 'JohnDoe', 'johndoe@email.com', 'john', '$5$rounds=535000$0XqrU7X1Uim2Vd89$QhWdhd2iMrsAC2KcAG1sFTnGfvKBg4EEmmVFBzexOQ0');
 
 
 
@@ -96,7 +100,13 @@ ALTER TABLE `users`
 ALTER TABLE `survey`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+COMMIT;
 
-
-INSERT INTO `users` (`id`, `name`, `email`, `username`, `password`) VALUES
-(1, 'JohnDoe', 'johndoe@email.com', 'john', '$5$rounds=535000$0XqrU7X1Uim2Vd89$QhWdhd2iMrsAC2KcAG1sFTnGfvKBg4EEmmVFBzexOQ0');
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
