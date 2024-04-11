@@ -56,3 +56,17 @@ INSERT INTO `survey` (`id`, `name`, `age`, `phone`, `symptoms`, `symptops_starte
 --
 -- Table structure for table `users`
 --
+CREATE TABLE `users` (
+  `id` int(20) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `username` varchar(200) NOT NULL,
+  `password` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `username`, `password`) VALUES
+(1, 'JohnDoe', 'johndoe@email.com', 'john', '$5$rounds=535000$0XqrU7X1Uim2Vd89$QhWdhd2iMrsAC2KcAG1sFTnGfvKBg4EEmmVFBzexOQ0');
