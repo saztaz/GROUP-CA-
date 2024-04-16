@@ -39,6 +39,9 @@ class RegisterForm(Form):
     password = PasswordField('Password', [
         validators.DataRequired(),
         validators.EqualTo('confirm', message='Passwords do not match')
+    ])
+    confirm = PasswordField('Confirm Password')
+
     
 
 
