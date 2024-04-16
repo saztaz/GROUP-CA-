@@ -15,6 +15,8 @@ mysql = MySQL(app)
 @app.route('/')
 def index():
     return render_template('home.html')
+@app.route('/contact_tracings')
+def contact_tracings():
 
 
 
