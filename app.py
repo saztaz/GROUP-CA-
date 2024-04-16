@@ -17,6 +17,11 @@ def index():
     return render_template('home.html')
 @app.route('/contact_tracings')
 def contact_tracings():
+    cur = mysql.connection.cursor()
+    result = cur.execute("SELECT * FROM survey")
+    contact_tracings = cur.fetchall()
+    if result > 0:
+        return render_template('responses.html', contact_tracings=contact_tracings)
 
 
 
