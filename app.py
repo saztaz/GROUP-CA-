@@ -41,12 +41,7 @@ def add_question():
         same_symptoms = form.same_symptoms.data
         cur = mysql.connection.cursor()
         cur.execute("INSERT INTO survey(name, age, phone, symptoms, symptops_started, closeness, other_medical_issues, family_members, any_recent_travel, same_symptoms) VALUES(%s, %s, %s,%s, %s, %s, %s, %s, %s, %s)", (name, age, phone, symptoms, symptops_started, closeness, other_medical_issues, family_members, any_recent_travel, same_symptoms))
-        mysql.connection.commit()
-        cur.close()
-        flash('Response Submitted', 'success')
-        return redirect(url_for('dashboard'))
-    return render_template('take_survey.html', form=form)
-
+       
 
 
 
