@@ -47,15 +47,6 @@ def add_question():
         return redirect(url_for('dashboard'))
     return render_template('take_survey.html', form=form)
 
-@app.route('/logout')
-@is_logged_in
-def logout():
-    session.clear()
-    flash('You are now logged out', 'success')
-    return redirect(url_for('login'))
 
-if __name__ == '__main__':
-    app.secret_key='secret123'
-    app.run(debug=True) 
 
-if 
+
