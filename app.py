@@ -13,9 +13,7 @@ app.config['MYSQL_DB'] = 'covid'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
 
-@app.route('/')
-def index():
-    return render_template('home.html')
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
