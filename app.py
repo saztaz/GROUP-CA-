@@ -42,12 +42,6 @@ class RegisterForm(Form):
     ])
     confirm = PasswordField('Confirm Password')
 
-    
-
-
-
-
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm(request.form)
