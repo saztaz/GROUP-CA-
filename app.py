@@ -59,16 +59,7 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
 
-@app.route('/contact_tracings')
-def contact_tracings():
-    cur = mysql.connection.cursor()
-    result = cur.execute("SELECT * FROM survey")
-    contact_tracings = cur.fetchall()
-    if result > 0:
-        return render_template('responses.html', contact_tracings=contact_tracings)
-    else:
-        msg = 'No Recent Activities Found'
-        return render_template('responses.html', msg=msg)
+
         
        
 
