@@ -12,6 +12,7 @@ app.config['MYSQL_DB'] = 'covid'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
 
+@app.route('/')
 
 
 
