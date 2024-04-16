@@ -32,6 +32,10 @@ def contact_tracing(id):
     result = cur.execute("SELECT * FROM survey WHERE id = %s", [id])
     contact_tracing = cur.fetchone()
     return render_template('response.html', contact_tracing=contact_tracing)
+class RegisterForm(Form):
+    name = StringField('Name', [validators.Length(min=1, max=50)])
+    username = StringField('Username', [validators.Length(min=4, max=25)])
+    
 
 
 
