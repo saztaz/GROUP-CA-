@@ -1,6 +1,8 @@
-from flask import 
+from flask import,  render_template, flash, redirect, url_for, session, request, logging
 from flask_mysqldb import MySQL
+from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
+from functools import wraps
 
 app = Flask(__name__)
 
@@ -32,15 +34,17 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
 
-@app.route('/take_survey', methods=['GET', 'POST'])
-@is_logged_in
-def add_question():
-    form = ArticleForm(request.form)
-    if request.method == 'POST' and form.validate():
-        any_recent_travel = form.any_recent_travel.data
-        same_symptoms = form.same_symptoms.data
-        cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO survey(name, age, phone, symptoms, symptops_started, closeness, other_medical_issues, family_members, any_recent_travel, same_symptoms) VALUES(%s, %s, %s,%s, %s, %s, %s, %s, %s, %s)", (name, age, phone, symptoms, symptops_started, closeness, other_medical_issues, family_members, any_recent_travel, same_symptoms)
+@app.route('/contact_tracings')
+def contact_tracings():
+    cur = mysql.connection.cursor()
+    result = cur.execute("SELECT * FROM survey")
+    contact_tracings = cur.fetchall()
+    if result > 0:
+        return render_template('responses.html', contact_tracings=contact_tracings)
+    else:
+        msg = 'No Recent Activities Found'
+        return render_template('responses.html', msg=msg)
+        
        
 
 
