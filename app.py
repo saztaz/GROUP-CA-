@@ -22,6 +22,10 @@ def contact_tracings():
     contact_tracings = cur.fetchall()
     if result > 0:
         return render_template('responses.html', contact_tracings=contact_tracings)
+    else:
+        msg = 'No Recent Activities Found'
+        return render_template('responses.html', msg=msg)
+    cur.close()
 
 
 
