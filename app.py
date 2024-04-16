@@ -29,6 +29,9 @@ def contact_tracings():
 @app.route('/contact_tracings/<string:id>/')
 def contact_tracing(id):
     cur = mysql.connection.cursor()
+    result = cur.execute("SELECT * FROM survey WHERE id = %s", [id])
+    contact_tracing = cur.fetchone()
+    return render_template('response.html', contact_tracing=contact_tracing)
 
 
 
