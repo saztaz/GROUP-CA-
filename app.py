@@ -26,6 +26,9 @@ def contact_tracings():
         msg = 'No Recent Activities Found'
         return render_template('responses.html', msg=msg)
     cur.close()
+@app.route('/contact_tracings/<string:id>/')
+def contact_tracing(id):
+    cur = mysql.connection.cursor()
 
 
 
