@@ -40,7 +40,7 @@ def add_question():
         any_recent_travel = form.any_recent_travel.data
         same_symptoms = form.same_symptoms.data
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO survey(name, age, phone, symptoms, symptops_started, closeness, other_medical_issues, family_members, any_recent_travel, same_symptoms) VALUES(%s, %s, %s,%s, %s, %s, %s, %s, %s, %s)", (name, age, phone, symptoms, symptops_started, closeness, other_medical_issues, family_members, any_recent_travel, same_symptoms))
+        cur.execute("INSERT INTO survey(name, age, phone, symptoms, symptops_started, closeness, other_medical_issues, family_members, any_recent_travel, same_symptoms) VALUES(%s, %s, %s,%s, %s, %s, %s, %s, %s, %s)", (name, age, phone, symptoms, symptops_started, closeness, other_medical_issues, family_members, any_recent_travel, same_symptoms)
        
 
 
