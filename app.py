@@ -81,6 +81,11 @@ if result> 0:
         flash('You are now logged in', 'success')
         return redirect(url_for('dashboard'))
 
+    else:
+         error = 'Invalid login'
+         return render_template('login.html', error=error)
+         cur.close()
+
 
 
 
