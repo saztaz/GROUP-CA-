@@ -68,11 +68,24 @@ def login():
         cur = mysql.connection.cursor()
 
         result= cur.execute("SELECT * FROM users WHERE username = %s", [username])
-        
+
+
+if result> 0:
+    data=cur.fetchone()
+    password= data['password']
+    
+    if sha256_crypt.verify(password_candidate, password):
+        session['logged_in'] = True
+        session['username'] = username
+
+
+
+
+
 
     
         
-       
+
 
 
 
