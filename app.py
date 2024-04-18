@@ -61,7 +61,7 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':
+  if request.method == 'POST':
         username= request.form['username']
         password_candidate= request.form['password']
         
@@ -70,22 +70,26 @@ def login():
         result= cur.execute("SELECT * FROM users WHERE username = %s", [username])
 
 
-if result> 0:
-    data=cur.fetchone()
-    password= data['password']
+        if result> 0:
+          data=cur.fetchone()
+          password= data['password']
     
-    if sha256_crypt.verify(password_candidate, password):
-        session['logged_in'] = True
-        session['username'] = username
+        if sha256_crypt.verify(password_candidate, password):
+          session['logged_in'] = True
+          session['username'] = username
         
-        flash('You are now logged in', 'success')
-        return redirect(url_for('dashboard'))
+          flash('You are now logged in', 'success')
+          return redirect(url_for('dashboard'))
 
-    else:
-         error = 'Invalid login'
+        else:
+          error = 'Invalid login'
+          return render_template('login.html', error=error)
+          cur.close()
+
+        else:
+         error = 'Username not found'
          return render_template('login.html', error=error)
-         cur.close()
-
+ return render_template('login.html')
 
 
 
