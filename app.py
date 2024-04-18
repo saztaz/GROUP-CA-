@@ -91,6 +91,18 @@ def login():
          return render_template('login.html', error=error)
  return render_template('login.html')
 
+def is_logged_in(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            flash('unathorzied','please login','danger')
+            return redirect(url_for(login())
+    return wrap
+                  
+    
+
 
 
 
