@@ -106,6 +106,66 @@ def logout():
     session.clear()
     flash('You are now logged out', 'success')
     return redirect(url_for('login'))
+
+@app.route('/logout')
+@is_logged_in
+def logout():
+    session.clear()
+    flash('You are now logged out', 'success')
+    return redirect(url_for('login'))
+
+@app.route('/dashboard')
+@is_logged_in
+def dashboard():
+    cur = mysql.connection.cursor()
+
+    result = cur.execute("SELECT * FROM survey WHERE name = %s", [session['username']])
+    Responses = cur.fetchall()
+    if result > 0:
+        return render_template('dashboard.html', Responses=Responses)      
+    else:
+        msg = 'No Contact Tracing Activity Found'
+        return render_template('dashboard.html', msg=msg)
+    cur.close()
+
+class ArticleForm(Form):
+    name= StringField('Full Name', [validators.Length(min=1, max=200)])
+    age = StringField('Age', [validators.length(min=1, max=200)])
+    phone = StringField('Contact Number',[validators.length(min=1,max=15)])
+    family_members = TextAreaField('Who else is in your family?', [validators.length(min=1)])
+    symptoms=TextAreaField('Symptoms',[validators.length(min=5)])
+    symptops_started = TextAreaField('When did you begin experiencing these symptoms?', [validators.Length(min=1)])
+    closeness = TextAreaField('Have you been in close contact with someone exhibiting symptoms?',[validators.length(min=1)])
+    other_medical_issues = TextAreaField('Do you have any chronic medical conditions? If so, please list them', [validators.length(min=2)])
+    any_recent_travel = TextAreaField('Do you have any travel history? If yes, please provide details:', [validators.length(min=1)])
+    same_symptoms = TextAreaField('Is anyone else in your household experiencing any of the same symptoms as you?', [validators.length(min=2)])
+
+@app.route('/take_survey', methods=['GET', 'POST'])
+@is_logged_in
+def add_question():
+    form = ArticleForm(request.form)
+    if request.method == 'POST' and form.validate():
+        name = form.name.data
+        age = form.age.data
+        phone = form.phone.data
+        symptoms = form.symptoms.data
+        symptops_started = form.symptops_started.data
+        closeness = form.closeness.data
+        other_medical_issues = form.other_medical_issues.data
+        family_members = form.family_members.data
+        any_recent_travel = form.any_recent_travel.data
+        same_symptoms = form.same_symptoms.data
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO survey(name, age, phone, symptoms, symptops_started, closeness, other_medical_issues, family_members, any_recent_travel, same_symptoms) VALUES(%s, %s, %s,%s, %s, %s, %s, %s, %s, %s)", (name, age, phone, symptoms, symptops_started, closeness, other_medical_issues, family_members, any_recent_travel, same_symptoms))
+        mysql.connection.commit()
+        cur.close()
+        flash('Response Submitted', 'success')
+        return redirect(url_for('dashboard'))
+    return render_template('take_survey.html', form=form)
+  
+if __name__ == '__main__':
+    app.secret_key='secret123'
+    app.run(debug=True)
                   
     
 
