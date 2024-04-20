@@ -100,6 +100,19 @@ def is_logged_in(f):
             flash('unathorzied','please login','danger')
             return redirect(url_for(login())
     return wrap
+@app.route('/dashboard')
+@is_logged_in
+def dashboard():
+    cur = mysql.connection.cursor()
+
+    result = cur.execute("SELECT * FROM survey WHERE name = %s", [session['username']])
+    Responses = cur.fetchall()
+    if result > 0:
+        return render_template('dashboard.html', Responses=Responses)      
+    else:
+        msg = 'No Contact Tracing Activity Found'
+        return render_template('dashboard.html', msg=msg)
+    cur.close()
                   
     
 
